@@ -1,64 +1,54 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ZUZU Robot - Otonom 4WD Robot</title>
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    {% seo %}
+    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
 </head>
 <body>
-  <header>
-    <div class="container">
-      <img src="assets/img/logo.png" alt="ZUZU Robot Logo" class="logo">
-      <h1>ZUZU Robot</h1>
-      <p>Otonom 4WD Robot Projesi</p>
-    </div>
-  </header>
-
-  <section id="about">
-    <div class="container">
-      <h2>Proje Hakkında</h2>
-      <p>ZUZU Robot, engellerden kaçınabilen, AI destekli otonom bir 4WD robot projesidir. Offline çalışabilme, web tabanlı kontrol ve modüler yazılım mimarisi gibi özelliklere sahiptir.</p>
-    </div>
-  </section>
-
-  <section id="features">
-    <div class="container">
-      <h2>Özellikler</h2>
-      <div class="feature-grid">
-        <div class="feature">
-          <h3>🤖 Otonom Navigasyon</h3>
-          <p>Ultrasonik sensörler ve AI ile engellerden kaçınma.</p>
-        </div>
-        <div class="feature">
-          <h3>🌐 Web Tabanlı Kontrol</h3>
-          <p>Wi-Fi üzerinden web paneli ile robotu yönetin.</p>
-        </div>
-        <div class="feature">
-          <h3>🧩 Modüler Mimari</h3>
-          <p>FreeRTOS tabanlı görev yönetimi ve eklenti sistemi.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="documentation">
-    <div class="container">
-      <h2>Dokümantasyon</h2>
-      <ul>
-        <li><a href="docs/setup.md">Kurulum Rehberi</a></li>
-        <li><a href="docs/usage.md">Kullanım Kılavuzu</a></li>
-        <li><a href="docs/faq.md">Sıkça Sorulan Sorular</a></li>
-      </ul>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <p>© 2023 ZUZU Robot. Tüm hakları saklıdır.</p>
-      <p><a href="https://github.com/zuzu-robot">GitHub Repo</a></p>
-    </div>
-  </footer>
+    <a id="skip-to-content" href="#content">İçeriğe Geç</a>
+    
+    <header class="page-header" role="banner">
+        <h1 class="project-name">{{ page.title }}</h1>
+        <h2 class="project-tagline">{{ page.description }}</h2>
+        {% if site.github.is_project_page %}
+            <a href="{{ site.github.repository_url }}" class="btn">GitHub’da Görüntüle</a>
+        {% endif %}
+        {% if site.show_downloads %}
+            <a href="{{ site.github.zip_url }}" class="btn">Download .zip</a>
+            <a href="{{ site.github.tar_url }}" class="btn">Download .tar.gz</a>
+        {% endif %}
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="about.html">Hakkında</a></li>
+            <li><a href="docs.html">Dokümantasyon</a></li>
+            <li><a href="contact.html">İletişim</a></li>
+            <li><a href="summary.html">Proje Özeti</a></li>
+            <li><a href="scope.html">Proje Kapsamı</a></li>
+            <li><a href="software.html">Yazılım Mermaid Yapısı</a></li>
+            <li><a href="hardware.html">Donanım Mermaid Yapısı</a></li>
+            <li><a href="drawings.html">Proje Çizimleri</a></li>
+            <li><a href="hardware-list.html">Donanım Listesi</a></li>
+        </ul>
+    </nav>
+    
+    <main id="content" class="main-content" role="main">
+        <h2>Hoş Geldiniz</h2>
+        <p>Robot AI Project, yapay zeka destekli bir robot geliştirme projesidir. Gelişmiş sensörler, makine öğrenimi ve karar verme algoritmaları ile donatılmıştır.</p>
+        <a href="docs.html" class="button">Daha Fazla Bilgi</a>
+    </main>
+    
+    <footer class="site-footer">
+        {% if site.github.is_project_page %}
+            <span class="site-footer-owner"><a href="{{ site.github.repository_url }}">{{ site.github.repository_name }}</a> projesi, <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a> tarafından geliştirilmektedir.</span>
+        {% endif %}
+        <span class="site-footer-credits">Bu sayfa <a href="https://pages.github.com">GitHub Pages</a> tarafından oluşturulmuştur.</span>
+    </footer>
 </body>
 </html>
