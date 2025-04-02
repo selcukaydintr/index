@@ -1,58 +1,75 @@
-<!DOCTYPE html>
-<html lang="{{ site.lang | default: "en-US" }}">
-  <head>
-    <meta charset="UTF-8">
+---
+layout: default
+---
 
-{% seo %}
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style" type="text/css" crossorigin>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#157878">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
-    {% include head-custom.html %}
-  </head>
-<body>
-    <a id="skip-to-content" href="#content">İçeriğe Geç</a>
+<div class="home-banner">
+  <div class="container">
+    <h1>{{ site.title }}</h1>
+    <p class="lead">{{ site.description }}</p>
+    <a href="/blog" class="btn btn-primary">Blog'a Göz Atın</a>
+  </div>
+</div>
+
+<div class="container home-content">
+  <div class="row">
+    <div class="col-md-8">
+      <h2 class="section-title">Son Yazılar</h2>
+      <div class="posts-list">
+        {% for post in site.posts limit:3 %}
+          <div class="post-card">
+            <div class="post-meta">
+              <span class="post-date">{{ post.date | date: "%d %b %Y" }}</span>
+              {% if post.categories.size > 0 %}
+                <span class="post-categories">
+                  {% for category in post.categories %}
+                    <a href="/categories/{{ category | slugify }}">{{ category }}</a>
+                  {% endfor %}
+                </span>
+              {% endif %}
+            </div>
+            <h3 class="post-title">
+              <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            </h3>
+            <div class="post-excerpt">
+              {{ post.excerpt | strip_html | truncatewords: 30 }}
+            </div>
+            <a href="{{ post.url | relative_url }}" class="read-more">Devamını Oku →</a>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="text-center">
+        <a href="/blog" class="btn btn-outline-primary">Tüm Yazılar</a>
+      </div>
+    </div>
     
-    <header class="page-header" role="banner">
-      <h1 class="project-name">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
-      <h2 class="project-tagline">{{ page.description | default: site.description | default: site.github.project_tagline }}</h2>
-      {% if site.github.is_project_page %}
-        <a href="{{ site.github.repository_url }}" class="btn">View on GitHub</a>
-      {% endif %}
-      {% if site.show_downloads %}
-        <a href="{{ site.github.zip_url }}" class="btn">Download .zip</a>
-        <a href="{{ site.github.tar_url }}" class="btn">Download .tar.gz</a>
-      {% endif %}
-    </header>
-    
-    <nav>
-        <ul>
-            <li><a href="index.html">Ana Sayfa</a></li>
-            <li><a href="about.html">Hakkında</a></li>
-            <li><a href="docs.html">Dokümantasyon</a></li>
-            <li><a href="contact.html">İletişim</a></li>
-            <li><a href="summary.html">Proje Özeti</a></li>
-            <li><a href="scope.html">Proje Kapsamı</a></li>
-            <li><a href="software.html">Yazılım Mermaid Yapısı</a></li>
-            <li><a href="hardware.html">Donanım Mermaid Yapısı</a></li>
-            <li><a href="drawings.html">Proje Çizimleri</a></li>
-            <li><a href="hardware-list.html">Donanım Listesi</a></li>
-        </ul>
-    </nav>
-    
-    <main id="content" class="main-content" role="main">
-        <h2>Hoş Geldiniz</h2>
-        <p>Robot AI Project, yapay zeka destekli bir robot geliştirme projesidir. Gelişmiş sensörler, makine öğrenimi ve karar verme algoritmaları ile donatılmıştır.</p>
-        <a href="docs.html" class="button">Daha Fazla Bilgi</a>
-    </main>
-    
-    <footer class="site-footer">
-        {% if site.github.is_project_page %}
-            <span class="site-footer-owner"><a href="{{ site.github.repository_url }}">{{ site.github.repository_name }}</a> projesi, <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a> tarafından geliştirilmektedir.</span>
-        {% endif %}
-        <span class="site-footer-credits">Bu sayfa <a href="https://pages.github.com">GitHub Pages</a> tarafından oluşturulmuştur.</span>
-    </footer>
-</body>
-</html>
+    <div class="col-md-4">
+      <div class="sidebar">
+        <div class="sidebar-section about-me">
+          <h3>Hakkımda</h3>
+          <p>Web geliştirme ve modern teknolojiler üzerine yazılar yazıyorum. Bilgi paylaşımı ve gelişime katkıda bulunmayı seviyorum.</p>
+          <a href="/about" class="btn btn-sm btn-outline-secondary">Daha Fazla</a>
+        </div>
+        
+        <div class="sidebar-section tags">
+          <h3>Popüler Etiketler</h3>
+          <div class="tags-cloud">
+            <a href="/tags/jekyll">Jekyll</a>
+            <a href="/tags/web-development">Web Geliştirme</a>
+            <a href="/tags/css">CSS</a>
+            <a href="/tags/javascript">JavaScript</a>
+            <a href="/tags/html">HTML</a>
+          </div>
+        </div>
+        
+        <div class="sidebar-section social">
+          <h3>Sosyal Medya</h3>
+          <div class="social-links">
+            <a href="https://github.com/{{ site.github_username }}"><i class="fab fa-github"></i></a>
+            <a href="https://twitter.com/{{ site.twitter_username }}"><i class="fab fa-twitter"></i></a>
+            <a href="mailto:{{ site.email }}"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
